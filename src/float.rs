@@ -1,15 +1,16 @@
-use crate::{Number};
 use std::{cmp::Ordering, num::FpCategory};
 
-pub trait Float: Number {
+use crate::{Number, Signed, UnsignedInteger};
+
+pub trait Float: Number + Signed {
     /// The unsigned integer variant of the type with the same size.
-    /// 
+    ///
     /// This is not normally defined for floats and is only here to be the
     /// return type of `.to_bits` and input for `.from_bits`.
-    type Bits: Number;
+    type Bits: UnsignedInteger;
 
     /// The byte array variant of the type with the same size.
-    /// 
+    ///
     /// This is not normally defined for floats and is only here for the
     /// to/from endian functons.
     type Bytes;
@@ -298,10 +299,6 @@ pub trait Float: Number {
     #[must_use]
     fn clamp(self, min: Self, max: Self) -> Self;
 
-    /// Computes the absolute value of `self`.
-    #[must_use]
-    fn abs(self) -> Self;
-
     /// Returns a number that represents the sign of `self`.
     #[must_use]
     fn signum(self) -> Self;
@@ -312,10 +309,10 @@ pub trait Float: Number {
 }
 
 macro_rules! impl_float {
-    ($($t:ty, $bits:ty);* $(;)*) => {
+    ($($t:ty, $b:ty);* $(;)*) => {
         $(
             impl Float for $t {
-                type Bits = $bits;
+                type Bits = $b;
 
                 type Bytes = [u8; std::mem::size_of::<Self>()];
 
@@ -528,9 +525,6 @@ macro_rules! impl_float {
 
                 #[inline(always)]
                 fn clamp(self, min: Self, max: Self) -> Self { Self::clamp(self, min, max) }
-
-                #[inline(always)]
-                fn abs(self) -> Self { Self::abs(self) }
 
                 #[inline(always)]
                 fn signum(self) -> Self { Self::signum(self) }
