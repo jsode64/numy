@@ -1,7 +1,6 @@
-use crate::{Binary, MinMax, Number};
-use std::mem::size_of;
+use crate::{Bit, MinMax, Num};
 
-pub trait Integer: Eq + Ord + Binary + MinMax + Number {
+pub trait Int: Eq + Ord + Bit + MinMax + Num {
     /// The size of this integer type in bits.
     const BITS: u32;
 
@@ -249,8 +248,8 @@ pub trait Integer: Eq + Ord + Binary + MinMax + Number {
 macro_rules! impl_integer {
     ($($t:ty )*) => {
         $(
-            impl Integer for $t {
-                const BITS: u32 = size_of::<Self>() as u32 * 8;
+            impl Int for $t {
+                const BITS: u32 = Self::BITS;
 
                 #[inline(always)]
                 fn count_ones(self) -> u32 {

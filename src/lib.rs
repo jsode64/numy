@@ -1,24 +1,31 @@
-mod binary;
+mod bit;
 mod float;
-mod integer;
-mod min_max;
-mod number;
-mod number_util;
-mod signed;
-mod signed_integer;
-mod unsigned_integer;
+mod int;
+mod num;
 
-pub use binary::Binary;
-pub use float::Float;
-pub use integer::Integer;
+pub use bit::{Bit, BitAssignOps, BitOps};
+pub use float::{Float, FloatConst};
+pub use int::{Int, SignedInt, UnsignedInt};
+pub use num::{Num, NumAssignOps, NumOps};
+
+mod min_max;
+mod signed;
+
 pub use min_max::MinMax;
-pub use number::Number;
 pub use signed::Signed;
-pub use signed_integer::SignedInteger;
-pub use unsigned_integer::UnsignedInteger;
 
 #[cfg(feature = "util")]
-pub use number_util;
+mod util;
 
-#[cfg(test)]
-mod tests {}
+#[cfg(feature = "util")]
+pub use util::NumUtil;
+
+macro_rules! impl_trait {
+    ($trait:ident: $($t:ty)*) => {
+        $(
+            impl $trait for $t {}
+        )*
+    };
+}
+
+pub(crate) use impl_trait;

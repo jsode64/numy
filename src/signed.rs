@@ -1,8 +1,8 @@
 use std::ops::Neg;
 
-use crate::Number;
+use crate::Num;
 
-pub trait Signed: Neg<Output = Self> + Number {
+pub trait Signed: Neg<Output = Self> + Num {
     /// The type's negative one (-1) value.
     const NEG_ONE: Self;
 

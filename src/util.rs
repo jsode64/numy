@@ -1,7 +1,7 @@
-use crate::Number;
+use crate::Num;
 
-/// A utility trait made to
-pub trait NumberUtil: Number {
+/// A utility trait for simple usage of any `Num` type.
+pub trait NumUtil: Num {
     /// Returns the difference between the two values.
     ///
     /// For signed types (`i32`, `f64`, etc.), returns `self - other`.
@@ -16,20 +16,20 @@ pub trait NumberUtil: Number {
     ///
     /// For unsigned types (`u8`, `u32`, etc.), returns `self`.
     #[must_use]
-    fn positive(self) -> Self;
+    fn abs(self) -> Self;
 }
 
-macro_rules! impl_util_signed {
+macro_rules! impl_num_util_signed {
     ($($t:ty)*) => {
         $(
-            impl NumberUtil for $t {
+            impl NumUtil for $t {
                 #[inline(always)]
                 fn diff(self, other: Self) -> Self {
                     self - other
                 }
 
                 #[inline(always)]
-                fn positive(self) -> Self {
+                fn abs(self) -> Self {
                     self.abs()
                 }
             }
@@ -37,19 +37,19 @@ macro_rules! impl_util_signed {
     };
 }
 
-impl_util_signed!(i8 i16 i32 i64 i128 isize f32 f64);
+impl_num_util_signed!(i8 i16 i32 i64 i128 isize f32 f64);
 
-macro_rules! impl_util_unsigned {
+macro_rules! impl_num_util_unsigned {
     ($($t:ty)*) => {
         $(
-            impl NumberUtil for $t {
+            impl NumUtil for $t {
                 #[inline(always)]
                 fn diff(self, other: Self) -> Self {
                     self.abs_diff(other)
                 }
 
                 #[inline(always)]
-                fn positive(self) -> Self {
+                fn abs(self) -> Self {
                     self
                 }
             }
@@ -57,4 +57,4 @@ macro_rules! impl_util_unsigned {
     };
 }
 
-impl_util_unsigned!(u8 u16 u32 u64 u128 usize);
+impl_num_util_unsigned!(u8 u16 u32 u64 u128 usize);

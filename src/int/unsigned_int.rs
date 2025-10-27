@@ -1,10 +1,8 @@
-use crate::Integer;
+use crate::{Int, SignedInt};
 
-use crate::SignedInteger;
-
-pub trait UnsignedInteger: Integer {
+pub trait UnsignedInt: Int {
     /// The signed integer type with the same size.
-    type S: SignedInteger;
+    type S: SignedInt;
 
     /// Checked addition with a signed integer.
     #[must_use]
@@ -46,7 +44,7 @@ pub trait UnsignedInteger: Integer {
 macro_rules! impl_unsigned_integer {
     ($($t:ty, $s:ty);* $(;)*) => {
         $(
-            impl UnsignedInteger for $t {
+            impl UnsignedInt for $t {
                 type S = $s;
 
                 #[inline(always)]
