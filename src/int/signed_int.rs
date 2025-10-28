@@ -1,5 +1,6 @@
 use crate::{Int, Signed, UnsignedInt};
 
+/// Signed integers.
 pub trait SignedInt: Int + Signed {
     /// The unsigned integer type with the same size.
     type U: UnsignedInt;

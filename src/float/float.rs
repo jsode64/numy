@@ -2,6 +2,17 @@ use std::{cmp::Ordering, num::FpCategory};
 
 use crate::{FloatConst, Num, Signed, UnsignedInt};
 
+/// Flating point types.
+///
+/// Exposes:
+/// - The `Num` trait
+/// - Floating point constants
+/// - Floating point functionality
+///
+/// See [`f32`] or [`f64`].
+///
+/// [`f32`]: https://doc.rust-lang.org/std/primitive.f32.html
+/// [`f64`]: https://doc.rust-lang.org/std/primitive.f64.html
 pub trait Float: Num + FloatConst + Signed {
     /// The unsigned integer variant of the type with the same size.
     ///

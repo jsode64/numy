@@ -1,6 +1,18 @@
-use crate::{Bit, MinMax, Num};
+use crate::{Bit, Num};
 
-pub trait Int: Eq + Ord + Bit + MinMax + Num {
+/// Integer types.
+///
+/// Exposes:
+/// - `Num` trait
+/// - Bitwise operations
+/// - Full comparison
+/// - Integer functionality
+///
+/// See [`i32`] or [`u32`].
+///
+/// [`i32`]: https://doc.rust-lang.org/std/primitive.i32.html
+/// [`u32`]: https://doc.rust-lang.org/std/primitive.u32.html
+pub trait Int: Eq + Ord + Bit + Num {
     /// The size of this integer type in bits.
     const BITS: u32;
 

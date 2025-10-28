@@ -2,6 +2,12 @@ use crate::MinMax;
 
 use super::{NumAssignOps, NumOps};
 
+/// Numerical types.
+///
+/// Exposes:
+/// - Non-assignming arithmetic operations
+/// - Assigning arithmetic operations
+/// - Partial comparisons
 pub trait Num: Copy + PartialEq + PartialOrd + MinMax + NumAssignOps + NumOps {
     const ZERO: Self;
 

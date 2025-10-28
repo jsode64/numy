@@ -2,6 +2,14 @@ use std::ops::Neg;
 
 use crate::Num;
 
+/// Signed functionality for signed `Num` types.
+///
+/// Exposes:
+/// - The `Neg` trait
+/// - A `NEG_ONE` constant
+/// - Signed functionality (`.abs`, signage checking)
+///
+/// Note that this contains signed types' `.abs` function, not `Float` or `SignedInt`.
 pub trait Signed: Neg<Output = Self> + Num {
     /// The type's negative one (-1) value.
     const NEG_ONE: Self;

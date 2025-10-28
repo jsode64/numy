@@ -1,6 +1,6 @@
 use crate::Num;
 
-/// A utility trait for simple usage of any `Num` type.
+/// Provides utility functions for simpler usage of the general `Numy` types.
 pub trait NumUtil: Num {
     /// Returns the difference between the two values.
     ///

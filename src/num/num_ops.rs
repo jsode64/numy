@@ -2,6 +2,7 @@ use std::ops::{Add, Div, Mul, Rem, Sub};
 
 use crate::impl_trait;
 
+/// Non-assigning arithmetic operations.
 pub trait NumOps:
     Sized
     + Add<Output = Self>

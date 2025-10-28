@@ -1,3 +1,4 @@
+/// Floating point constants.
 pub trait FloatConst {
     /// Euler's number (e).
     const E: Self;

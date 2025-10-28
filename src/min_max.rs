@@ -1,3 +1,4 @@
+/// Exposes a type's range via minimum and maximum.
 pub trait MinMax {
     const MIN: Self;
 

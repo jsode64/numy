@@ -2,6 +2,7 @@ use std::ops::{BitAnd, BitOr, BitXor, Not, Shl, Shr};
 
 use crate::impl_trait;
 
+/// Non-assigning bitwise operations.
 pub trait BitOps:
     Sized
     + BitAnd<Output = Self>

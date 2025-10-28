@@ -2,6 +2,7 @@ use std::ops::{BitAndAssign, BitOrAssign, BitXorAssign, ShlAssign, ShrAssign};
 
 use crate::impl_trait;
 
+/// Assigning bitwise operations.
 pub trait BitAssignOps:
     Sized
     + BitAndAssign
