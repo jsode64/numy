@@ -2,6 +2,13 @@
 name = "numy"
 version = "0.1.0"
 edition = "2021"
+authors = ["Joseph Soderquist"]
+description = "Trait boundaries for primitive Rust types"
+repository = "https://github.com/jsode64/numy"
+documentation = "https://docs.rs/numy"
+readme = "README.md"
+license = "MIT"
+keywords = ["numerics", "traits", "math", "mathematics"]
 
 [dependencies]
 
