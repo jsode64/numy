@@ -1,6 +1,6 @@
 [package]
 name = "numy"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["Joseph Soderquist"]
 description = "Trait boundaries for primitive Rust types"
@@ -13,4 +13,4 @@ keywords = ["numerics", "traits", "math", "mathematics"]
 [dependencies]
 
 [features]
-"util" = []
+"ex" = []

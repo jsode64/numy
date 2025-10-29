@@ -259,10 +259,12 @@ pub trait Float: Num + FloatConst + Signed {
     fn to_radians(self) -> Self;
 
     /// Returns the maximum of the two numbers, ignoring NaN.
+    #[deprecated = "Use `NumOrd::max` instead"]
     #[must_use]
     fn max(self, other: Self) -> Self;
 
     /// Returns the minimum of the two numbers, ignoring NaN.
+    #[deprecated = "Use `NumOrd::min` instead"]
     #[must_use]
     fn min(self, other: Self) -> Self;
 
@@ -307,6 +309,7 @@ pub trait Float: Num + FloatConst + Signed {
     fn total_cmp(&self, other: &Self) -> Ordering;
 
     /// Restrict a value to a certain interval unless it is NaN.
+    #[deprecated = "Use `NumOrd::clamp` instead"]
     #[must_use]
     fn clamp(self, min: Self, max: Self) -> Self;
 

@@ -40,22 +40,7 @@ fn roy<T: UnsignedInt>(n: T) -> T {
 }
 ```
 
-`"util"` feature:
+# Feature: "ex"
 
-```rust
-// Requires the `"util"` feature:
-use numy::NumUtil;
-
-fn main() {
-    assert_eq!(1.abs_diff(3_i32), 2);
-    assert_eq!(1.abs_diff(3_u32), 2);
-    assert_eq!(1.0.abs_diff(3.0_f64), 2.0);
-}
-
-/// Returns the absolute difference of the two values.
-fn abs_diff<T: NumUtil>(lhs: T, rhs: T) -> T {
-    // `.diff` will never underflow for unsigned integers and `.abs` makes sure
-    // signed types yield non-negative results.
-    lhs.diff(rhs).abs()
-}
-```
+The "ex" feature adds additional functionality to the `Num` trait for smoother
+usage of generic `Num` types.
