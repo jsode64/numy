@@ -50,11 +50,13 @@ macro_rules! impl_num_u {
 
                 const TWO: Self = 2 as Self;
 
+                #[cfg(feature = "ex")]
                 #[inline(always)]
                 fn diff(self, other: Self) -> Self {
                     self.abs_diff(other)
                 }
 
+                #[cfg(feature = "ex")]
                 #[inline(always)]
                 fn abs(self) -> Self {
                     self
@@ -76,11 +78,13 @@ macro_rules! impl_num_s {
 
                 const TWO: Self = 2 as Self;
 
+                #[cfg(feature = "ex")]
                 #[inline(always)]
                 fn diff(self, other: Self) -> Self {
                     self - other
                 }
 
+                #[cfg(feature = "ex")]
                 #[inline(always)]
                 fn abs(self) -> Self {
                     self.abs()
